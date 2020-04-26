@@ -66,7 +66,7 @@ class DecoderRNN(nn.Module):
         batch_size = img_feat.size(0)
         h, c = self.init_lstm_hidden(img_feat)
         embedding = self.embedding(captions)
-        caption_length = len(captions[0])
+        caption_length = len(captions[0]) - 1
         
         preds = torch.zeros(batch_size, caption_length, self.vocab_size).to(device)
         alphas = torch.zeros(batch_size, caption_length, img_feat.size(1)).to(device)
